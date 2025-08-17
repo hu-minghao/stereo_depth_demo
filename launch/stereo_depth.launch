@@ -1,0 +1,9 @@
+<launch>
+    <node pkg="stereo_depth" type="stereo_depth_node" name="stereo_depth_node" output="screen">
+        <rosparam file="$(find stereo_depth)/config/stereo_params.yaml" command="load"/>
+        <remap from="/cam0/image_raw" to="/cam0/image_raw"/>
+        <remap from="/cam1/image_raw" to="/cam1/image_raw"/>
+    </node>
+    <!-- 启动rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find stereo_depth)/rviz/config.rviz" />
+</launch>
